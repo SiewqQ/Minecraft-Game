@@ -62,6 +62,11 @@ class HashTableSeparateChaining(HashTable[str, V]):
     def __setitem__(self, key: str, data: V) -> None:
         """
         Set a (key, data) pair in our hash table
+        complexity:
+            Best: O(K) where K is the length of the key (for hashing). Happens when the position is empty.
+            Worst: O(N * K) where N is the number of items in the hash table and K is the length of the key.
+                Happens when the position is not empty and we have to traverse the linked list, comparing
+                all the keys.
         """
         position = self.hash(key)
         if self.__table[position] is None:

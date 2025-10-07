@@ -90,6 +90,27 @@ class MinecraftBlock:
         self.hardness = hardness
         self.item = item
 
+    def ratio(self) -> float:
+        """
+        Returns the value-to-hardness ratio for the block.
+
+        Args:
+            None
+
+        Returns:
+            float: the ratio of a minecraft block
+
+        Complexity:
+            Best Case Complexity: O(1)
+            Worst Case Complexity: O(1)
+
+        Justification:
+            Both the best and worst case are the same because it only involves constant time operations of accessing item's value and
+            performing division operation to obtain the ratio of a block.
+        """
+
+        return self.item.value / self.hardness
+
     def __eq__(self, other: 'MinecraftBlock') -> bool:
         """
         Compares two MinecraftBlock instances.
@@ -105,11 +126,87 @@ class MinecraftBlock:
             Worst Case Complexity: O(1)
 
         Justification:
-            The comparison is based on the hardness of the blocks.
+            The comparison is based on the name of the block.
             This is a constant time operation as it involves simple arithmetic and comparison.
         """
 
         return self.name == other.name
+
+    def __lt__(self, other: 'MinecraftBlock') -> bool:
+        """
+        Checks if this block's value-to-hardness ratio is less than another block's.
+
+        Args:
+            other (MinecraftBlock): The other block to compare with.
+
+        Returns:
+            bool: True if self's ratio is less than other's ratio, False otherwise.
+
+        Complexity:
+            Best Case Complexity: O(1)
+            Worst Case Complexity: O(1)
+
+        Justification:
+            The best and worse case are the same as this method only involves constant time operation of comparison. The ratio() method has a constant time complexity of O(1) too.
+        """
+        return self.ratio() < other.ratio()
+
+    def __le__(self, other: 'MinecraftBlock') -> bool:
+        """
+        Checks if this block's value-to-hardness ratio is less than or equal to another block's.
+
+        Args:
+            other (MinecraftBlock): The other block to compare with.
+
+        Returns:
+            bool: True if self's ratio is less than or equal to other's ratio, False otherwise.
+
+        Complexity:
+            Best Case Complexity: O(1)
+            Worst Case Complexity: O(1)
+
+        Justification:
+            The best and worse case are the same as this method only involves constant time operation of comparison. The ratio() method has a constant time complexity of O(1) too.
+        """
+        return self.ratio() <= other.ratio()
+
+    def __gt__(self, other: 'MinecraftBlock') -> bool:
+        """
+        Checks if this block's value-to-hardness ratio is greater than another block's.
+
+        Args:
+            other (MinecraftBlock): The other block to compare with.
+
+        Returns:
+            bool: True if self's ratio is greater than other's ratio, False otherwise.
+
+        Complexity:
+            Best Case Complexity: O(1)
+            Worst Case Complexity: O(1)
+
+        Justification:
+            The best and worse case are the same as this method only involves constant time operation of comparison. The ratio() method has a constant time complexity of O(1) too.
+        """
+        return self.ratio() > other.ratio()
+
+    def __ge__(self, other: 'MinecraftBlock') -> bool:
+        """
+        Checks if this block's value-to-hardness ratio is greater than or equal to another block's.
+
+        Args:
+            other (MinecraftBlock): The other block to compare with.
+
+        Returns:
+            bool: True if self's ratio is greater than or equal to other's ratio, False otherwise.
+
+        Complexity:
+            Best Case Complexity: O(1)
+            Worst Case Complexity: O(1)
+
+        Justification:
+           The best and worse case are the same as this method only involves constant time operation of comparison. The ratio() method has a constant time complexity of O(1) too.
+        """
+        return self.ratio() >= other.ratio()
 
     def __str__(self) -> str:
         """
